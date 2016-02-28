@@ -20,13 +20,13 @@ If you want to contribute, please submit a pull request with your changes. More 
 This project uses the MIT license. This essentially means that if you use code from the project then you need to credit it in your product some way. More information can be found [here](http://choosealicense.com/).
 
 ## Tools Used In Project
-[OpenGL](https://www.opengl.org/)
+[OpenGL, Version 4.5](https://www.opengl.org/)
 
 [Visual Studio 2015 Community](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)
 
-[GLEW](http://glew.sourceforge.net/)
+[GLEW, Version 1.13.0](http://glew.sourceforge.net/)
 
-[GLFW](http://www.glfw.org/)
+[GLFW, Version 3.1.2](http://www.glfw.org/)
 
 ## Tutorials And Books
 If you are interested in OpenGL tutorials check out the videos from [Sonar Systems](https://www.youtube.com/playlist?list=PLRtjMdoYXLf4yTkXgyRBy5LXTFhdU7LWq) and [MakingGamesWithBen](https://www.youtube.com/playlist?list=PLSPw4ASQYyymu3PfG9gxywSPghnSMiOAW). They both are incredibly talented YouTubers who have a lot to share about OpenGL and my project will surely be using some code from their tutorials. 

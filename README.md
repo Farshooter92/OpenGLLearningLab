@@ -21,8 +21,11 @@ This project uses the MIT license. This essentially means that if you use code f
 
 ## Tools Used In Project
 [OpenGL](https://www.opengl.org/)
+
 [Visual Studio 2015 Community](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)
+
 [GLEW](http://glew.sourceforge.net/)
+
 [GLFW](http://www.glfw.org/)
 
 ## Tutorials And Books

@@ -79,7 +79,10 @@ int main(void)
 	// INTIALIZE OPENGL
 	static const char * vs_source[] =
 	{
-		"#version 420 core                                                 \n"
+		"#version 450 core                                                 \n"
+		"                                                                  \n"
+		"// 'offset' is an input vertex attribute                          \n"
+		"layout (location = 0) in vec4 offset;                             \n"
 		"                                                                  \n"
 		"void main(void)                                                   \n"
 		"{                                                                 \n"
@@ -87,7 +90,8 @@ int main(void)
 		"                                   vec4(-0.25, -0.25, 0.5, 1.0),  \n"
 		"                                   vec4( 0.25,  0.25, 0.5, 1.0)); \n"
 		"                                                                  \n"
-		"    gl_Position = vertices[gl_VertexID];                          \n"
+		"    // Add 'offset' to our hard-coded vertex position             \n"
+		"    gl_Position = vertices[gl_VertexID] + offset;                 \n"
 		"}                                                                 \n"
 	};
 
@@ -139,7 +143,16 @@ int main(void)
 		static const GLfloat green[] = { 0.0f, 0.25f, 0.0f, 1.0f };
 		glClearBufferfv(GL_COLOR, 0, green);
 
+		// Use the program object we created earlier for rendering
 		glUseProgram(program);
+
+		GLfloat attrib[] = { (float)sin(glfwGetTime()) * 0.5f,
+							 (float)cos(glfwGetTime()) * 0.6f,
+							 0.0f, 0.0f };
+
+		// Pass our offset to vertex data to the vertex shader
+		glVertexAttrib4fv(0, attrib);
+
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		// Swap front and back buffers

@@ -1,22 +1,41 @@
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+static void error_callback(int error, const char* description)
+{
+	fputs(description, stderr);
+}
+
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, GL_TRUE);
+	}
+
+	if (key == GLFW_KEY_T && action == GLFW_PRESS)
+	{
+		std::cout << "Test" << std::endl;
+	}
+
+}
+
 int main(void)
 {
 	GLFWwindow *window;
+
+	// Set the error callback
+	glfwSetErrorCallback(error_callback);
 
 	// Initialize the library
 	if (!glfwInit())
 	{
 		return -1;
 	}
-
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// Create a windowed mode window and its OpenGL context
 	window = glfwCreateWindow(640, 480, "OpenGL Learning Lab", NULL, NULL);
@@ -30,6 +49,13 @@ int main(void)
 	// Make the window's context current
 	glfwMakeContextCurrent(window);
 	
+	// The minimum number of screen updates to wait for until the buffers are swapped
+	glfwSwapInterval(1);
+
+	// Set up the key callbacks
+	glfwSetKeyCallback(window, key_callback);
+
+	// start GLEW extension handler
 	glewExperimental = true;
 
 	// Setup GLEW
@@ -39,6 +65,13 @@ int main(void)
 		glfwTerminate();
 		return -1;
 	}
+
+	// get version info
+	const GLubyte* renderer = glGetString(GL_RENDERER); // get renderer string
+	const GLubyte* version = glGetString(GL_VERSION); // version as a string
+	printf("Renderer: %s\n", renderer);
+	printf("OpenGL version supported %s\n", version);
+
 	// OpenGL Variables
 	GLuint program;
 	GLuint vao;
@@ -90,7 +123,17 @@ int main(void)
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
-		glClear(GL_COLOR_BUFFER_BIT);
+		float ratio;
+		int width, height;
+		
+		glfwGetFramebufferSize(window, &width, &height);
+		ratio = width / (float)height;
+
+		// Sets the viewport to the screen dimensions
+		glViewport(0, 0, width, height);
+		
+		// Clear the color and depth buffers
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// Render OpenGL here
 		static const GLfloat green[] = { 0.0f, 0.25f, 0.0f, 1.0f };
@@ -108,6 +151,7 @@ int main(void)
 
 	glDeleteVertexArrays(1, &vao);
 	glDeleteProgram(program);
+	glfwDestroyWindow(window);
 	glfwTerminate();
 
 	return 0;

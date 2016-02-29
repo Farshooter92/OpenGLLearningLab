@@ -39,5 +39,7 @@ This is purely experimental. Clone at your own risk.
 # Thanks from the Author
 I would like to thank all the people I mentioned in the "Tutorials And Books" section. Without their efforts, I would be unable to pursue my curiosity into OpenGL. 
 
+I would also like to thank this [site](http://antongerdelan.net/opengl/hellotriangle.html) for helping me bridge the gap between GLFW and GLEW.
+
 # Art Assets Taken From
 None right now

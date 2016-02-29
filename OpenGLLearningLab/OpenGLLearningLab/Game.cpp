@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 Game::Game() :
+	_window(nullptr),
 	_screenWidth(640),
 	_screenHeight(480),
 	_gameState(GameState::PLAY),
@@ -161,6 +162,9 @@ void Game::drawGame()
 
 	// Sets the viewport to the screen dimensions
 	glViewport(0, 0, width, height);
+
+	//Set the base depth to 1.0
+	glClearDepth(1.0);
 
 	// Clear the color and depth buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

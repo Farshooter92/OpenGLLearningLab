@@ -33,5 +33,11 @@ private:
 	GLuint _program;
 	GLuint _vao;
 
+public:
+	// Getters
+	GameState GetGameState() const { return _gameState; }
+
+	// Setters
+	void setGameState(GameState gs) { _gameState = gs; }
 };
 

@@ -52,6 +52,9 @@ void Game::initSystems()
 	// Make the window's context current
 	glfwMakeContextCurrent(_window);
 
+	// Set the data in the window, we will use this for input
+	glfwSetWindowUserPointer(_window, this);
+
 	// The minimum number of screen updates to wait for until the buffers are swapped
 	glfwSwapInterval(1);
 
@@ -196,13 +199,22 @@ void Game::errorCallback(int error, const char * description)
 
 void Game::keyCallback(GLFWwindow * window, int key, int scancode, int action, int mods)
 {
+	
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 	{
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
 
-	if (key == GLFW_KEY_Q && action == GLFW_PRESS)
+	Game* game = reinterpret_cast<Game*>(glfwGetWindowUserPointer(window));
+
+	if (game != nullptr)
 	{
-		std::cout << "Quit" << std::endl;
+		if (key == GLFW_KEY_Q && action == GLFW_PRESS)
+		{
+			std::cout << "Quit" << std::endl;
+			game->setGameState(GameState::EXIT);
+		}
 	}
+
+	
 }

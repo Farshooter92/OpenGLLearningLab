@@ -2,6 +2,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm\vec3.hpp>
+#include <FreeImage.h>
 
 #include "Enums.h"
 

@@ -1,0 +1,7 @@
+Add files to the libs directory
+Select properties on your project in the solution explorer to open up configuration properties
+Go to C++/General and add the location of any .h files to the Additional Include directories
+Make sure you use $(SolutionDir) and not use absolute paths
+Go to Linker/General and add the location of any .lib files to Additional Library Directories
+Go to Linker/Input and add the name of any .lib files you are using.
+Finally add any .dll files to the Project directory where your .vcproj file is.

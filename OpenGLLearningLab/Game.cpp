@@ -65,9 +65,11 @@ void Game::initSystems()
 	glewExperimental = true;
 
 	// Setup GLEW
-	if (glewInit() != GLEW_OK)
+	GLenum err = glewInit();
+	
+	if (err != GLEW_OK)
 	{
-		fprintf(stderr, "GLEW failed to initialize");
+		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}

@@ -30,6 +30,8 @@ This project uses the MIT license. This essentially means that if you use code f
 
 [GLM, Version 0.9.7.3](http://glm.g-truc.net/0.9.7/index.html)
 
+[FreeImage, Version 3.17.0](http://freeimage.sourceforge.net/)
+
 ## Tutorials And Books
 If you are interested in OpenGL tutorials check out the videos from [Sonar Systems](https://www.youtube.com/playlist?list=PLRtjMdoYXLf4yTkXgyRBy5LXTFhdU7LWq) and [MakingGamesWithBen](https://www.youtube.com/playlist?list=PLSPw4ASQYyymu3PfG9gxywSPghnSMiOAW). They both are incredibly talented YouTubers who have a lot to share about OpenGL and my project will surely be using some code from their tutorials. 
 
